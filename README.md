@@ -10,22 +10,22 @@
     3. Classification of detected relationship 
 
 ============
-## Assumptions:
+### Assumptions:
     1. Entites are already extracted
     2. Input data contains marked entities with POS tags and other information required to extract relationship between them.
 
 ===========
-## Paper referred: Attention Guided Graph Convolutional Networks for Relation Extraction
+### Paper referred: Attention Guided Graph Convolutional Networks for Relation Extraction
 ####                ( https://arxiv.org/abs/1906.07510 )
 
 ===========
-## Dataset used : TAC Relation Extraction Dataset (TACRED)
+### Dataset used : TAC Relation Extraction Dataset (TACRED)
 ####                ( https://nlp.stanford.edu/projects/tacred/ )
 
 ===========
-## Neural network used : Graph Convolutional Networks ( Attention Guided Graph Convolutional Networks for Relation Extraction )
+### Neural network used : Graph Convolutional Networks ( Attention Guided Graph Convolutional Networks for Relation Extraction )
 ===========
-## Requirements : 
+### Requirements : 
     1. GPU to train and test the model
     2. Pip install all the packages mentioned in requirements.txt
 
