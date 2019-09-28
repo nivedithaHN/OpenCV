@@ -1,4 +1,4 @@
-# Classification and Named Entity Recognition
+# Sentence Classification and Named Entity Recognition
 
 ## Description 
 
