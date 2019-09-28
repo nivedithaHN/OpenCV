@@ -1,23 +1,23 @@
 # Classification and Named Entity Recognition
 
-### Description 
+## Description 
 
 - `Train a deep learning model on a question dataset to classify them and also extract entities.`
 
-# Requirements
+## Requirements
 
 - `python3`
 - `pip3 install -r requirements.txt`
 
 
 
-# Run
+## Run
 
 - `To train classification : python -W ignore train.py`
 - `To predict user input data : python -W ignore run_sample_predict.py `
 
 
-# Result
+## Result
 
 ### Validation Data
 ```
