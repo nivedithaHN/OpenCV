@@ -9,9 +9,34 @@
 - `python3`
 - `pip3 install -r requirements.txt`
 
+## Dataset
 
+- `Name : Experimental Data for Question Classification `
+- `Link : https://cogcomp.seas.upenn.edu/Data/QA/QC/ ` 
+- `Entities : `
+```
+        Following are the five labels/category -
 
-## Run
+        LOC - Locations
+        NUM - Numeric values
+        HUM - Human beings
+        ENTY - entities
+        DESC - Description and abstract concepts
+
+        For sub-categories and more details refer to [link](https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html)
+
+```
+
+## Model 
+
+- `Classification model : **BiLSTM** - Keras is used to define layers.`
+- `Entity recognition: Flair  - Simple frame work of NLP tasks.` 
+
+## Instructions to run the code -
+
+        Note : Please run the code in GPU machine
+          
+- ``
 
 - `To train classification : python -W ignore train.py`
 - `To predict user input data : python -W ignore run_sample_predict.py `
@@ -48,3 +73,13 @@ weighted avg       0.84      0.82      0.83      1074
                  'entites': {'PER': {'end': 35, 'name': 'Bob Marley', 'start': 25}}}
 
 ```
+
+### Screenshots
+```
+        Please refer to directory "output screenshot".
+```
+
+### Sample Input
+```
+        Please refer to file "sample input.txt" in directory "dataset".
+
