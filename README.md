@@ -1,142 +1,50 @@
-# Relationship Extraction
+# Classification and Named Entity Recognition
 
-============
-## Objective: The objective of your neural network is to extract relationship between two entities.
+### Description 
 
-============
-### Relationship extraction involes following subtasks :
-    1. Extract entities 
-    2. Detection of relationship between entities recognised
-    3. Classification of detected relationship 
+- `Train a deep learning model on a question dataset to classify them and also extract entities.`
 
-============
-### Assumptions:
-    1. Entites are already extracted
-    2. Input data contains marked entities with POS tags and other information required to extract relationship between them.
+# Requirements
 
-===========
-### Paper referred: Attention Guided Graph Convolutional Networks for Relation Extraction
-####                ( https://arxiv.org/abs/1906.07510 )
+- `python3`
+- `pip3 install -r requirements.txt`
 
-===========
-### Dataset used : TAC Relation Extraction Dataset (TACRED)
-####                ( https://nlp.stanford.edu/projects/tacred/ )
 
-===========
-### Neural network used : Graph Convolutional Networks ( Attention Guided Graph Convolutional Networks for Relation Extraction )
-===========
-### Requirements : 
-    1. GPU to train and test the model
-    2. Pip install all the packages mentioned in requirements.txt
 
-===========
+# Run
 
-This paper/code introduces the Attention Guided Graph Convolutional graph convolutional networks (AGGCNs) over dependency trees for the large scale sentence-level relation extraction task (TACRED).
+- `To train classification : python -W ignore train.py`
+- `To predict user input data : python -W ignore run_sample_predict.py `
 
-You can find the paper [here](http://www.statnlp.org/wp-content/uploads/2019/06/Attention_Guided_Graph_Convolutional_Networks_for_Relation_Extraction.pdf)
 
-See below for an overview of the model architecture:
+# Result
 
-![AGGCN Architecture](fig/Arch.png "AGGCN Architecture")
+### Validation Data
+```
+        Validation accuracy : 0.8256
+```
+### Test Data
+```
+        Test accuracy :  0.8249
 
-  
+               precision    recall  f1-score   support
 
-## Requirements
+        DESC       0.70      0.90      0.79       238
+        ENTY       0.80      0.69      0.74       265
+         HUM       0.94      0.82      0.87       236
+         LOC       0.85      0.88      0.86       153
+         NUM       0.94      0.88      0.91       182
 
-Our model was trained on GPU Tesla P100-SXM2 of Nvidia DGX.  
-
-- Python 3 (tested on 3.6.8)
-
-- PyTorch (tested on 0.4.1)
-
-- CUDA (tested on 9.0)
-
-- tqdm
-
-- unzip, wget (for downloading only)
-
-There is no guarantee that the model is the same as we released and reported if you run the code on different environments (including hardware and software). You can find the the [logs](https://github.com/Cartus/AGGCN_TACRED/blob/master/logs.txt) and the [config](https://github.com/Cartus/AGGCN_TACRED/blob/master/config.json) under the main directory. If you train the model by using the default setting, you will get the exact same output in the logs.txt. We also report the the mean and std of F1 score, the stats is 68.2% +- 0.5%. The random seeds are 0, 37, 47, 72 and 76.
-
-## Preparation
-
-  
-
-The code requires that you have access to the TACRED dataset (LDC license required). Once you have the TACRED data, please put the JSON files under the directory `dataset/tacred`.
-
-  
-
-First, download and unzip GloVe vectors:
+    accuracy                           0.82      1074
+   macro avg       0.84      0.83      0.83      1074
+weighted avg       0.84      0.82      0.83      1074
 
 ```
-chmod +x download.sh; ./download.sh
+### Sample Output
 ```
+        INPUT :  What caused the death of Bob Marley ?
+        OUTPUT: 
+                {'category': 'DESC',
+                 'entites': {'PER': {'end': 35, 'name': 'Bob Marley', 'start': 25}}}
 
-  
-
-Then prepare vocabulary and initial word vectors with:
-
-```
-python3 prepare_vocab.py dataset/tacred dataset/vocab --glove_dir dataset/glove
-```
-
-  
-
-This will write vocabulary and word vectors as a numpy matrix into the dir `dataset/vocab`.
-
-  
-
-## Training
-
-  
-
-To train the AGGCN model, run:
-
-```
-bash train_aggcn.sh 1
-```
-
-  
-
-Model checkpoints and logs will be saved to `./saved_models/01`.
-
-  
-
-For details on the use of other parameters, please refer to `train.py`.
-
-  
-
-## Evaluation
-
-  
-
-Our pretrained model is saved under the dir saved_models/01. To run evaluation on the test set, run:
-
-```
-python3 eval.py saved_models/01 --dataset test
-```
-
-  
-
-This will use the `best_model.pt` file by default. Use `--model checkpoint_epoch_10.pt` to specify a model checkpoint file.
-
-## Retrain
-
-Reload a pretrained model and finetune it, run:
-```
-python train.py --load --model_file saved_models/01/best_model.pt --optim sgd --lr 0.001
-```
-
-## Related Repo
-
-The paper uses the model DCGCN, for detail architecture please refer to the TACL19 paper [Densely Connected Graph Convolutional Network for Graph-to-Sequence Learning](https://github.com/Cartus/DCGCN). Codes are adapted from the repo of the EMNLP18 paper [Graph Convolution over Pruned Dependency Trees Improves Relation Extraction](https://nlp.stanford.edu/pubs/zhang2018graph.pdf).
-
-## Citation
-
-```
-@inproceedings{guo2019aggcn,
- author = {Guo, Zhijiang and Zhang, Yan and Lu, Wei},
- booktitle = {Proc. of ACL},
- title = {Attention Guided Graph Convolutional Networks for Relation Extraction},
- year = {2019}
-}
 ```
