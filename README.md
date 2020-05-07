@@ -1,4 +1,11 @@
 
+
+# ROLE BASED USER ACCESS CONTROL     
+
+##### Role-based user access control assigns roles to users and through these roles, users will be authorised to access resources and perform particular functions.   
+
+
+
 ---
 ---
 ## **Slack Integration**
